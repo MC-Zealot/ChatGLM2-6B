@@ -4,7 +4,7 @@
 🤗 <a href="https://huggingface.co/THUDM/chatglm2-6b" target="_blank">HF Repo</a> • 🐦 <a href="https://twitter.com/thukeg" target="_blank">Twitter</a> • 📃 <a href="https://arxiv.org/abs/2103.10360" target="_blank">[GLM@ACL 22]</a> <a href="https://github.com/THUDM/GLM" target="_blank">[GitHub]</a> • 📃 <a href="https://arxiv.org/abs/2210.02414" target="_blank">[GLM-130B@ICLR 23]</a> <a href="https://github.com/THUDM/GLM-130B" target="_blank">[GitHub]</a> <br>
 </p>
 <p align="center">
-    👋 加入我们的 <a href="https://join.slack.com/t/chatglm/shared_invite/zt-1udqapmrr-ocT1DS_mxWe6dDY8ahRWzg" target="_blank">Slack</a> 和 <a href="resources/WECHAT.md" target="_blank">WeChat</a>
+    👋 加入我们的 <a href="https://join.slack.com/t/chatglm/shared_invite/zt-1y7pqoloy-9b1g6T6JjA8J0KxvUjbwJw" target="_blank">Slack</a> 和 <a href="resources/WECHAT.md" target="_blank">WeChat</a>
 </p>
 
 *Read this in [English](README_EN.md)*
@@ -16,7 +16,9 @@ ChatGLM**2**-6B 是开源中英双语对话模型 [ChatGLM-6B](https://github.co
 1. **更强大的性能**：基于 ChatGLM 初代模型的开发经验，我们全面升级了 ChatGLM2-6B 的基座模型。ChatGLM2-6B 使用了 [GLM](https://github.com/THUDM/GLM) 的混合目标函数，经过了 1.4T 中英标识符的预训练与人类偏好对齐训练，[评测结果](#评测结果)显示，相比于初代模型，ChatGLM2-6B 在 MMLU（+23%）、CEval（+33%）、GSM8K（+571%） 、BBH（+60%）等数据集上的性能取得了大幅度的提升，在同尺寸开源模型中具有较强的竞争力。
 2. **更长的上下文**：基于 [FlashAttention](https://github.com/HazyResearch/flash-attention) 技术，我们将基座模型的上下文长度（Context Length）由 ChatGLM-6B 的 2K 扩展到了 32K，并在对话阶段使用 8K 的上下文长度训练，允许更多轮次的对话。但当前版本的 ChatGLM2-6B 对单轮超长文档的理解能力有限，我们会在后续迭代升级中着重进行优化。
 3. **更高效的推理**：基于 [Multi-Query Attention](http://arxiv.org/abs/1911.02150) 技术，ChatGLM2-6B 有更高效的推理速度和更低的显存占用：在官方的模型实现下，推理速度相比初代提升了 42%，INT4 量化下，6G 显存支持的对话长度由 1K 提升到了 8K。
-4. **更开放的协议**：ChatGLM2-6B 权重对学术研究**完全开放**，在获得官方的书面许可后，亦**允许商业使用**。如果您发现我们的开源模型对您的业务有用，我们欢迎您对下一代模型 ChatGLM3 研发的捐赠。
+4. **更开放的协议**：ChatGLM2-6B 权重对学术研究**完全开放**，在填写[问卷](https://lslfd0slxc.feishu.cn/share/base/form/shrcnfAj1ZnGOW7kqAfiHFcAFXc)进行登记后**亦允许免费商业使用**。
+
+欢迎通过 [chatglm.cn](https://chatglm.cn) 体验更大规模的 ChatGLM 模型。
 
 -----
 
@@ -24,9 +26,17 @@ ChatGLM2-6B 开源模型旨在与开源社区一起推动大模型技术发展�
 
 尽管模型在训练的各个阶段都尽力确保数据的合规性和准确性，但由于 ChatGLM2-6B 模型规模较小，且模型受概率随机性因素影响，无法保证输出内容的准确性，且模型易被误导。**本项目不承担开源模型和代码导致的数据安全、舆情风险或发生任何模型被误导、滥用、传播、不当利用而产生的风险和责任。**
 
+## 更新信息
+**[2023/07/04]** 发布 P-Tuning v2 与 全参数微调脚本，参见 [P-Tuning](./ptuning)。
+
 ## 友情链接
 对 ChatGLM2 进行加速的开源项目：
+* [fastllm](https://github.com/ztxz16/fastllm/): 全平台加速推理方案，单GPU批量推理每秒可达10000+token，手机端最低3G内存实时运行（骁龙865上约4~5 token/s）
 * [chatglm.cpp](https://github.com/li-plus/chatglm.cpp): 类似 llama.cpp 的 CPU 量化加速推理方案，实现 Mac 笔记本上实时对话
+* [ChatGLM2-TPU](https://github.com/sophgo/ChatGLM2-TPU): 采用TPU加速推理方案，在算能端侧芯片BM1684X（16T@FP16，内存16G）上实时运行约3 token/s
+
+支持 ChatGLM-6B 和相关应用在线训练的示例项目：
+* [ChatGLM2-6B 的部署与微调教程](https://www.heywhale.com/mw/project/64984a7b72ebe240516ae79c)
 
 ## 评测结果
 我们选取了部分中英文典型数据集进行了评测，以下为 ChatGLM2-6B 模型在 [MMLU](https://github.com/hendrycks/test) (英文)、[C-Eval](https://cevalbenchmark.com/static/leaderboard.html)（中文）、[GSM8K](https://github.com/openai/grade-school-math)（数学）、[BBH](https://github.com/suzgunmirac/BIG-Bench-Hard)（英文） 上的测评结果。在 [evaluation](./evaluation/README.md) 中提供了在 C-Eval 上进行测评的脚本。
@@ -133,7 +143,11 @@ git clone https://github.com/THUDM/ChatGLM2-6B
 cd ChatGLM2-6B
 ```
 
-然后使用 pip 安装依赖：`pip install -r requirements.txt`，其中 `transformers` 库版本推荐为 `4.30.2`，`torch` 推荐使用 2.0 以上的版本，以获得最佳的推理性能。
+然后使用 pip 安装依赖：
+```
+pip install -r requirements.txt
+```
+其中 `transformers` 库版本推荐为 `4.30.2`，`torch` 推荐使用 2.0 及以上的版本，以获得最佳的推理性能。
 
 ### 代码调用 
 
@@ -181,28 +195,20 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/THUDM/chatglm2-6b
 模型的实现仍然处在变动中。如果希望固定使用的模型实现以保证兼容性，可以在 `from_pretrained` 的调用中增加 `revision="v1.0"` 参数。`v1.0` 是当前最新的版本号，完整的版本列表参见 [Change Log](https://huggingface.co/THUDM/chatglm2-6b#change-log)。
 
 ### 网页版 Demo
-
 ![web-demo](resources/web-demo.gif)
-
-首先安装 Gradio：`pip install gradio`，然后运行仓库中的 [web_demo.py](web_demo.py)： 
-
+可以通过以下命令启动基于 Gradio 的网页版 demo：
 ```shell
 python web_demo.py
 ```
 
-程序会运行一个 Web Server，并输出地址。在浏览器中打开输出的地址即可使用。
-> 默认使用了 `share=False` 启动，不会生成公网链接。如有需要公网访问的需求，可以修改为 `share=True` 启动。
-> 
+![web-demo](resources/web-demo2.gif)
 
-感谢 [@AdamBear](https://github.com/AdamBear) 实现了基于 Streamlit 的网页版 Demo `web_demo2.py`。使用时首先需要额外安装以下依赖：
-```shell
-pip install streamlit streamlit-chat
-```
-然后通过以下命令运行：
+可以通过以下命令启动基于 Streamlit 的网页版 demo：
 ```shell
 streamlit run web_demo2.py
 ```
-经测试，如果输入的 prompt 较长的话，使用基于 Streamlit 的网页版 Demo 会更流畅。
+
+网页版 demo 会运行一个 Web Server，并输出地址。在浏览器中打开输出的地址即可使用。 经测试，基于 Streamlit 的网页版 Demo 会更流畅。
 
 ### 命令行 Demo
 
@@ -265,18 +271,10 @@ if __name__ == "__main__":
 默认情况下，模型以 FP16 精度加载，运行上述代码需要大概 13GB 显存。如果你的 GPU 显存有限，可以尝试以量化方式加载模型，使用方法如下：
 
 ```python
-# 按需修改，目前只支持 4/8 bit 量化
-model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).quantize(8).cuda()
-```
-
-模型量化会带来一定的性能损失，经过测试，ChatGLM2-6B 在 4-bit 量化下仍然能够进行自然流畅的生成。
-
-如果你的内存不足，可以直接加载量化后的模型：
-```python
 model = AutoModel.from_pretrained("THUDM/chatglm2-6b-int4",trust_remote_code=True).cuda()
 ```
 
-<!-- 量化模型的参数文件也可以从[这里](https://cloud.tsinghua.edu.cn/d/674208019e314311ab5c/)手动下载。 -->
+模型量化会带来一定的性能损失，经过测试，ChatGLM2-6B 在 4-bit 量化下仍然能够进行自然流畅的生成。 量化模型的参数文件也可以从[这里](https://cloud.tsinghua.edu.cn/d/674208019e314311ab5c/)手动下载。
 
 ### CPU 部署
 
@@ -303,6 +301,8 @@ model = AutoModel.from_pretrained("your local path", trust_remote_code=True).to(
 此时可以使用量化后的模型 chatglm2-6b-int4。因为 GPU 上量化的 kernel 是使用 CUDA 编写的，因此无法在 MacOS 上使用，只能使用 CPU 进行推理。
 为了充分使用 CPU 并行，还需要[单独安装 OpenMP](FAQ.md#q1)。
 
+在 Mac 上进行推理也可以使用 [ChatGLM.cpp](https://github.com/li-plus/chatglm.cpp)
+
 ### 多卡部署
 如果你有多张 GPU，但是每张 GPU 的显存大小都不足以容纳完整的模型，那么可以将模型切分在多张GPU上。首先安装 accelerate: `pip install accelerate`，然后通过如下方法加载模型：
 ```python
@@ -313,7 +313,7 @@ model = load_model_on_gpus("THUDM/chatglm2-6b", num_gpus=2)
 
 ## 协议
 
-本仓库的代码依照 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议开源，ChatGLM2-6B 模型的权重的使用则需要遵循 [Model License](MODEL_LICENSE)。ChatGLM2-6B 权重对学术研究**完全开放**，在获得官方的书面许可后，亦**允许商业使用**。如果您发现我们的开源模型对您的业务有用，我们欢迎您对下一代模型 ChatGLM3 研发的捐赠。申请商用许可与捐赠请联系 [yiwen.xu@zhipuai.cn](mailto:yiwen.xu@zhipuai.cn)。 
+本仓库的代码依照 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议开源，ChatGLM2-6B 模型的权重的使用则需要遵循 [Model License](MODEL_LICENSE)。ChatGLM2-6B 权重对学术研究**完全开放**，在填写[问卷](https://lslfd0slxc.feishu.cn/share/base/form/shrcnfAj1ZnGOW7kqAfiHFcAFXc)进行登记后**亦允许免费商业使用**。
 
 
 ## 引用
