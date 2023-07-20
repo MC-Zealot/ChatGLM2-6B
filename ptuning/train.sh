@@ -1,5 +1,5 @@
-PRE_SEQ_LEN=128
-LR=2e-2
+PRE_SEQ_LEN=128 #seq length which is about gpu mem
+LR=2e-2 # learning rate
 NUM_GPUS=1
 
 torchrun --standalone --nnodes=1 --nproc-per-node=$NUM_GPUS main.py \
@@ -24,5 +24,5 @@ torchrun --standalone --nnodes=1 --nproc-per-node=$NUM_GPUS main.py \
     --save_steps 1000 \
     --learning_rate $LR \
     --pre_seq_len $PRE_SEQ_LEN \
-    --quantization_bit 4
+    --quantization_bit 8
 
