@@ -1,5 +1,5 @@
 search_api="8281071f58b19ce8040b4c648165485cdab14b75dbf4c2eee86f40e1ae561428"
-openai_key="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"
+openai_key=""
 import os
 os.environ["OPENAI_API_KEY"] = openai_key
 os.environ["SERPAPI_API_KEY"] = search_api

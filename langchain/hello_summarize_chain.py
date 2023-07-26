@@ -1,6 +1,6 @@
 from langchain import OpenAI, PromptTemplate, LLMChain
 from langchain.prompts import PromptTemplate
-key="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"
+key=""
 import os
 os.environ["OPENAI_API_KEY"] = key
 from langchain.document_loaders import UnstructuredFileLoader
