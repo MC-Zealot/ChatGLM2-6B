@@ -5,3 +5,4 @@ ptuning/output/
 ptuning/AdvertiseGen/
 ptuning/__pycache__/
 ptuning/METADATA
+.idea/
