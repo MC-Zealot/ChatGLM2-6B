@@ -1,2 +1,7 @@
 data/
 model_pretrained/
+ptuning/output/
+*.log
+ptuning/AdvertiseGen/
+ptuning/__pycache__/
+ptuning/METADATA
