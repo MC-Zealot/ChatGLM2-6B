@@ -1,8 +1,7 @@
-search_api="8281071f58b19ce8040b4c648165485cdab14b75dbf4c2eee86f40e1ae561428"
-openai_key=""
+from context import *
 import os
-os.environ["OPENAI_API_KEY"] = openai_key
-os.environ["SERPAPI_API_KEY"] = search_api
+os.environ["OPENAI_API_KEY"] = OPENAI_KEY
+os.environ["SERPAPI_API_KEY"] = SEARCH_API
 
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent

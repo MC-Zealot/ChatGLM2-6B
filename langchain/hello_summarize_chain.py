@@ -1,8 +1,8 @@
 from langchain import OpenAI, PromptTemplate, LLMChain
 from langchain.prompts import PromptTemplate
-key=""
+from context import *
 import os
-os.environ["OPENAI_API_KEY"] = key
+os.environ["OPENAI_API_KEY"] = OPENAI_KEY
 from langchain.document_loaders import UnstructuredFileLoader
 from langchain.chains.summarize import load_summarize_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter

@@ -1,6 +1,6 @@
-key=""
+from context import *
 import os
-os.environ["OPENAI_API_KEY"] = key 
+os.environ["OPENAI_API_KEY"] = OPENAI_KEY
 #from langchain.llms import OpenAI
 import langchain as lc
 
