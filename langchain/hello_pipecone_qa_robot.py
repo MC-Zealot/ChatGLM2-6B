@@ -28,7 +28,7 @@ split_docs = text_splitter.split_documents(documents)
 index_name="zzz"
 
 # 持久化数据
-docsearch = Pinecone.from_texts([t.page_content for t in split_docs], embeddings, index_name=index_name)
+# docsearch = Pinecone.from_texts([t.page_content for t in split_docs], embeddings, index_name=index_name)
 
 # 加载数据
 docsearch = Pinecone.from_existing_index(index_name,embeddings)
