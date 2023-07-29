@@ -7,3 +7,4 @@ ptuning/__pycache__/
 ptuning/METADATA
 .idea/
 langchain/context.py
+langchain/__pycache__/
