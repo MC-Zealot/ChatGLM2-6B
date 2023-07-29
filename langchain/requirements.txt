@@ -1,0 +1,8 @@
+langchain
+openai
+google-search-results
+cchardet
+charset-normalizer
+unstructured
+chromadb
+youtube-transcript-api
