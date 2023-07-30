@@ -3,9 +3,16 @@ import platform
 import signal
 from transformers import AutoTokenizer, AutoModel
 import readline
+import torch
 
-tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True)
-model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).quantize(8).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/home/zealot/yizhou/git/chatglm2-6b-int4", trust_remote_code=True)
+# tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True)
+# model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).quantize(4).cuda()
+model = AutoModel.from_pretrained("/home/zealot/yizhou/git/chatglm2-6b-int4", trust_remote_code=True).half().cuda()
+# model = AutoModel.from_pretrained("/home/zealot/yizhou/git/chatglm2-6b-int4", load_in_8bit=True, trust_remote_code=True,torch_dtype=torch.float16, device_map="auto",).cuda()
+# model = AutoModel.from_pretrained("/home/zealot/yizhou/git/chatglm2-6b-int4", load_in_8bit=True, trust_remote_code=True,torch_dtype=torch.float16, device_map="auto",).half().cuda()
+# model = AutoModel.from_pretrained("/home/zealot/yizhou/git/chatglm2-6b-int4", trust_remote_code=True).half().quantize(4).cuda()
+# model = AutoModel.from_pretrained("THUDM/chatglm2-6b-int4", trust_remote_code=True).half().cuda()
 # 多显卡支持，使用下面两行代替上面一行，将num_gpus改为你实际的显卡数量
 # from utils import load_model_on_gpus
 # model = load_model_on_gpus("THUDM/chatglm2-6b", num_gpus=2)

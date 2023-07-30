@@ -8,3 +8,5 @@ ptuning/METADATA
 .idea/
 langchain/context.py
 langchain/__pycache__/
+langchain/tmp_files/
+langchain/keda_*/
